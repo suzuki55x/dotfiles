@@ -1,0 +1,198 @@
+" neobundle設定
+set nocompatible
+filetype plugin indent off
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#begin(expand('~/.vim/bundle'))
+endif 
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" 以下は必要に応じて追加
+" ファイル移動とか
+NeoBundle 'Shougo/unite.vim'
+" unite file_mruがなんか分離したらしい
+NeoBundle 'Shougo/neomru.vim'
+" 自動補完
+NeoBundle 'Shougo/neosnippet.vim'
+" 自動補完(辞書)
+NeoBundle 'Shougo/neosnippet-snippets'
+" 自動補完
+NeoBundle 'Shougo/neocomplete.vim'
+" emmet
+NeoBundle 'mattn/emmet-vim'
+" git使うやつ
+NeoBundle 'tpope/vim-fugitive'
+" rails使うやつ
+NeoBundle 'tpope/vim-rails'
+" rubyでendを自動挿入してくれるやつ
+NeoBundle 'tpope/vim-endwise'
+" ステータスラインの色変えるやつ
+NeoBundle 'itchyny/lightline.vim'
+" ビジュアルモードでコメントアウトやつ(選択してctr+-を二回)
+NeoBundle 'tomtom/tcomment_vim'
+" HTML5のタグ用のsyntax
+NeoBundle 'othree/html5.vim'
+" CSS3用のsyntax
+NeoBundle 'hail2u/vim-css3-syntax'
+" javaScript用のsyntax
+NeoBundle 'jelera/vim-javascript-syntax'
+" laravel, blade用のsyntax
+NeoBundle 'jwalton512/vim-blade'
+" 選択範囲のdiff, 選択して:Linediffを二回
+NeoBundle 'AndrewRadev/linediff.vim'
+
+" カラースキーム
+NeoBundle 'reedes/vim-colors-pencil'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'KKPMW/moonshine-vim'
+NeoBundle 'jacoborus/tender.vim'
+
+call neobundle#end()
+
+filetype plugin indent on
+
+
+" ここからsetting
+" 検索結果ハイライト
+set hlsearch
+" ファイルフォーマットはunix(改行コード対策)
+set ff=unix
+" カラースキームはmolokaiにする
+" colorscheme moonshine
+colorscheme tender
+" ダーク系のカラースキームを使用
+set background=dark
+" 文字コード指定
+  set enc=utf-8
+  set fenc=utf-8
+" 編集中ファイルが変更されたら自動で再読み込み
+  set autoread
+" 入力中コマンドを表示
+  set showcmd
+" コマンドライン補完
+  set wildmode=list:longest,full
+" 行番号表示
+  set number
+" 現在の行を強調表示
+"  set cursorline
+set nocursorline
+" 現在の列を強調表示
+"  set cursorcolumn
+set nocursorcolumn
+" ビープ音を可視化
+  set visualbell
+" 対応する括弧表示
+  set showmatch
+
+" タブ幅を4にする
+  set tabstop=4
+" 行頭タブ幅も4にする
+  set shiftwidth=4
+" 行頭スペースをタブ扱いする
+"  set expandtab
+"  ↑しない
+  set noexpandtab
+" undofile作成しない。
+  set noundofile
+" バックアップファイルも作成しない。
+  set nobackup
+" 初期保存先を指定
+  set browsedir=buffer
+" Windowsで"/"有効化
+  set shellslash
+" 自動的にディレクトリ移動
+  set autochdir
+"ステータス行に現在のgitブランチを表示する
+  set statusline+=%{fugitive#statusline()}
+"ウインドウのタイトルバーにファイルのパス情報等を表示する
+  set title
+"タブ、空白、改行の可視化
+set list
+set listchars=tab:>.,trail:_,eol:?,extends:>,precedes:<,nbsp:%
+" カーソルが何行目の何列目に置かれているかを表示する
+set ruler
+" コマンドラインに使われる画面上の行数
+set cmdheight=2
+" エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
+set laststatus=2
+" ステータス行に表示させる情報の指定
+"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+" 行番号の色
+ highlight LineNr ctermfg=darkyellow
+
+"全角スペースをハイライト表示
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
+   
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme       * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    augroup END
+    call ZenkakuSpace()
+endif
+
+
+" lightline設定
+let g:lightline = {
+        \ 'colorscheme': 'tender',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'LightlineModified',
+        \   'readonly': 'LightlineReadonly',
+        \   'fugitive': 'LightlineFugitive',
+        \   'filename': 'LightlineFilename',
+        \   'fileformat': 'LightlineFileformat',
+        \   'filetype': 'LightlineFiletype',
+        \   'fileencoding': 'LightlineFileencoding',
+        \   'mode': 'LightlineMode'
+        \ }
+        \ }
+
+function! LightlineModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineReadonly()
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+          \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+          \  &ft == 'unite' ? unite#get_status_string() :
+          \  &ft == 'vimshell' ? vimshell#get_status_string() :
+          \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+          \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+    return fugitive#head()
+  else
+      return ''
+  endif
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+    return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
