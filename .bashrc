@@ -1,4 +1,4 @@
 # thefuck設定
-#eval $(thefuck --alias)
+eval $(thefuck --alias)
 # windowsのgit bashではこちら。minttyの問題らしい
-eval $(thefuck --alias --winpty)
+#eval $(winpty thefuck --alias)
