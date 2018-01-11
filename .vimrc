@@ -42,6 +42,12 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'jwalton512/vim-blade'
 " 選択範囲のdiff, 選択して:Linediffを二回
 NeoBundle 'AndrewRadev/linediff.vim'
+" markdown用のsyntaxとかいろいろ
+NeoBundle 'plasticboy/vim-markdown'
+" markdownをブラウザでプレビューするやつ。PrevimOpen
+NeoBundle 'kannokanno/previm'
+" ブラウザ開くやつ。previmだけでもいいが設定めんどいので
+NeoBundle 'tyru/open-browser.vim'
 
 " カラースキーム
 NeoBundle 'reedes/vim-colors-pencil'
@@ -53,6 +59,8 @@ call neobundle#end()
 
 filetype plugin indent on
 
+" .mdもマークダウン形式のファイルだよ。
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " ここからsetting
 " 検索結果ハイライト
