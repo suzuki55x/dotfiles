@@ -61,6 +61,8 @@ filetype plugin indent on
 
 " .mdもマークダウン形式のファイルだよ。
 au BufRead,BufNewFile *.md set filetype=markdown
+" PrevimOpenで開くブラウザ指定
+ let g:previm_open_cmd = 'start chrome'
 
 " ここからsetting
 " 検索結果ハイライト
