@@ -40,14 +40,20 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'jelera/vim-javascript-syntax'
 " laravel, blade用のsyntax
 NeoBundle 'jwalton512/vim-blade'
-" 選択範囲のdiff, 選択して:Linediffを二回
-NeoBundle 'AndrewRadev/linediff.vim'
+" julia用のsyntax
+NeoBundle 'JuliaEditorSupport/julia-vim'
+" elixir用のsyntax
+NeoBundle 'elixir-lang/vim-elixir'
+" kotlin用のsyntax
+NeoBundle 'udalov/kotlin-vim'
 " markdown用のsyntaxとかいろいろ
 NeoBundle 'plasticboy/vim-markdown'
 " markdownをブラウザでプレビューするやつ。PrevimOpen
 NeoBundle 'kannokanno/previm'
 " ブラウザ開くやつ。previmだけでもいいが設定めんどいので
 NeoBundle 'tyru/open-browser.vim'
+" 選択範囲のdiff, 選択して:Linediffを二回
+NeoBundle 'AndrewRadev/linediff.vim'
 
 " カラースキーム
 NeoBundle 'reedes/vim-colors-pencil'
