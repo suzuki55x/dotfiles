@@ -1,3 +1,5 @@
+" syntax ON
+syntax on;
 " neobundle設定
 set nocompatible
 filetype plugin indent off
