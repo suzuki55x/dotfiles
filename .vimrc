@@ -5,8 +5,8 @@ set nocompatible
 filetype plugin indent off
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle'))
+	set runtimepath+=~/.vim/bundle/neobundle.vim
+	call neobundle#begin(expand('~/.vim/bundle'))
 endif 
 
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -70,7 +70,9 @@ filetype plugin indent on
 " .mdもマークダウン形式のファイルだよ。
 au BufRead,BufNewFile *.md set filetype=markdown
 " PrevimOpenで開くブラウザ指定
- let g:previm_open_cmd = 'start chrome'
+let g:previm_open_cmd = 'start chrome'
+" vim-markdownが勝手にfolding(折り畳み)してくるの対策
+let g:vim_markdown_folding_disabled = 1
 
 " ここからsetting
 " 検索結果ハイライト
@@ -83,16 +85,16 @@ colorscheme tender
 " ダーク系のカラースキームを使用
 set background=dark
 " 文字コード指定
-  set enc=utf-8
-  set fenc=utf-8
+set enc=utf-8
+set fenc=utf-8
 " 編集中ファイルが変更されたら自動で再読み込み
-  set autoread
+set autoread
 " 入力中コマンドを表示
-  set showcmd
+set showcmd
 " コマンドライン補完
-  set wildmode=list:longest,full
+set wildmode=list:longest,full
 " 行番号表示
-  set number
+set number
 " 現在の行を強調表示
 "  set cursorline
 set nocursorline
@@ -100,32 +102,32 @@ set nocursorline
 "  set cursorcolumn
 set nocursorcolumn
 " ビープ音を可視化
-  set visualbell
+set visualbell
 " 対応する括弧表示
-  set showmatch
+set showmatch
 
 " タブ幅を4にする
-  set tabstop=4
+set tabstop=4
 " 行頭タブ幅も4にする
-  set shiftwidth=4
+set shiftwidth=4
 " 行頭スペースをタブ扱いする
 "  set expandtab
 "  ↑しない
-  set noexpandtab
+set noexpandtab
 " undofile作成しない。
-  set noundofile
+set noundofile
 " バックアップファイルも作成しない。
-  set nobackup
+set nobackup
 " 初期保存先を指定
-  set browsedir=buffer
+set browsedir=buffer
 " Windowsで"/"有効化
-  set shellslash
+set shellslash
 " 自動的にディレクトリ移動
-  set autochdir
+set autochdir
 "ステータス行に現在のgitブランチを表示する
-  set statusline+=%{fugitive#statusline()}
+set statusline+=%{fugitive#statusline()}
 "ウインドウのタイトルバーにファイルのパス情報等を表示する
-  set title
+set title
 "タブ、空白、改行の可視化
 set list
 set listchars=tab:>.,trail:_,eol:?,extends:>,precedes:<,nbsp:%
@@ -138,79 +140,79 @@ set laststatus=2
 " ステータス行に表示させる情報の指定
 "set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 " 行番号の色
- highlight LineNr ctermfg=darkyellow
+highlight LineNr ctermfg=darkyellow
 
 "全角スペースをハイライト表示
 function! ZenkakuSpace()
-    highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+	highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
 endfunction
-   
+
 if has('syntax')
-    augroup ZenkakuSpace
-        autocmd!
-        autocmd ColorScheme       * call ZenkakuSpace()
-        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
-    augroup END
-    call ZenkakuSpace()
+	augroup ZenkakuSpace
+		autocmd!
+		autocmd ColorScheme       * call ZenkakuSpace()
+		autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+	augroup END
+	call ZenkakuSpace()
 endif
 
 
 " lightline設定
 let g:lightline = {
-        \ 'colorscheme': 'tender',
-        \ 'mode_map': {'c': 'NORMAL'},
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-        \ },
-        \ 'component_function': {
-        \   'modified': 'LightlineModified',
-        \   'readonly': 'LightlineReadonly',
-        \   'fugitive': 'LightlineFugitive',
-        \   'filename': 'LightlineFilename',
-        \   'fileformat': 'LightlineFileformat',
-        \   'filetype': 'LightlineFiletype',
-        \   'fileencoding': 'LightlineFileencoding',
-        \   'mode': 'LightlineMode'
-        \ }
-        \ }
+			\ 'colorscheme': 'tender',
+			\ 'mode_map': {'c': 'NORMAL'},
+			\ 'active': {
+			\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+			\ },
+			\ 'component_function': {
+			\   'modified': 'LightlineModified',
+			\   'readonly': 'LightlineReadonly',
+			\   'fugitive': 'LightlineFugitive',
+			\   'filename': 'LightlineFilename',
+			\   'fileformat': 'LightlineFileformat',
+			\   'filetype': 'LightlineFiletype',
+			\   'fileencoding': 'LightlineFileencoding',
+			\   'mode': 'LightlineMode'
+			\ }
+			\ }
 
 function! LightlineModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! LightlineReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
 endfunction
 
 function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-          \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-          \  &ft == 'unite' ? unite#get_status_string() :
-          \  &ft == 'vimshell' ? vimshell#get_status_string() :
-          \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-          \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+	return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+				\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+				\  &ft == 'unite' ? unite#get_status_string() :
+				\  &ft == 'vimshell' ? vimshell#get_status_string() :
+				\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+				\ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 
 function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-    return fugitive#head()
-  else
-      return ''
-  endif
+	if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+		return fugitive#head()
+	else
+		return ''
+	endif
 endfunction
 
 function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
+	return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! LightlineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+	return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
 
 function! LightlineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+	return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
 endfunction
 
 function! LightlineMode()
-    return winwidth(0) > 60 ? lightline#mode() : ''
+	return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
