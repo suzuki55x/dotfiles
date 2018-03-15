@@ -69,6 +69,9 @@ filetype plugin indent on
 
 " .mdもマークダウン形式のファイルだよ。
 au BufRead,BufNewFile *.md set filetype=markdown
+" .vueはHTML形式のファイルだよ。
+au BufRead,BufNewFile *.vue set filetype=html
+
 " PrevimOpenで開くブラウザ指定
 let g:previm_open_cmd = 'start chrome'
 " vim-markdownが勝手にfolding(折り畳み)してくるの対策
