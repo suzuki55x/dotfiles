@@ -56,6 +56,8 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 " 選択範囲のdiff, 選択して:Linediffを二回
 NeoBundle 'AndrewRadev/linediff.vim'
+" todo.txt用のsyntaxと、コマンド追加 円マーク+sとかxとかdとかDとかdate+<tab>とか。:h todo.txt
+NeoBundle 'freitass/todo.txt-vim'
 
 " カラースキーム
 NeoBundle 'reedes/vim-colors-pencil'
