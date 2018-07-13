@@ -39,7 +39,12 @@ NeoBundle 'othree/html5.vim'
 " CSS3用のsyntax
 NeoBundle 'hail2u/vim-css3-syntax'
 " javaScript用のsyntax
-NeoBundle 'jelera/vim-javascript-syntax'
+"NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'pangloss/vim-javascript'
+" jsx用syntax
+NeoBundle 'mxw/vim-jsx'
+" vue用syntax
+NeoBundle 'posva/vim-vue'
 " laravel, blade用のsyntax
 NeoBundle 'jwalton512/vim-blade'
 " julia用のsyntax
@@ -79,6 +84,9 @@ let g:previm_open_cmd = 'start chrome'
 " vim-markdownが勝手にfolding(折り畳み)してくるの対策
 let g:vim_markdown_folding_disabled = 1
 
+" jsx用syntaxをjsにも有効にする
+let g:jsx_ext_required = 0
+
 " ここからsetting
 " 検索結果ハイライト
 set hlsearch
@@ -88,7 +96,7 @@ set ff=unix
 " colorscheme moonshine
 colorscheme tender
 " ダーク系のカラースキームを使用
-set background=dark
+"set background=dark
 " 文字コード指定
 set enc=utf-8
 set fenc=utf-8
