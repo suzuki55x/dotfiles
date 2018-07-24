@@ -63,6 +63,8 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'AndrewRadev/linediff.vim'
 " todo.txt用のsyntaxと、コマンド追加 円マーク+sとかxとかdとかDとかdate+<tab>とか。:h todo.txt
 NeoBundle 'freitass/todo.txt-vim'
+" 日記作る時用。新規ディレクトリ内のファイル保存するときにディレクトリを作成
+NeoBundle 'mopp/autodirmake.vim'
 
 " カラースキーム
 NeoBundle 'reedes/vim-colors-pencil'
