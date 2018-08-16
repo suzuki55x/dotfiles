@@ -11,6 +11,9 @@ endif
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" windows用のvimprocのdllを持ってくる
+" let g:vimproc#download_windows_dll = 1
+
 " 以下は必要に応じて追加
 " ファイル移動とか
 NeoBundle 'Shougo/unite.vim'
@@ -67,6 +70,21 @@ NeoBundle 'freitass/todo.txt-vim'
 NeoBundle 'mopp/autodirmake.vim'
 " twig用syntax
 NeoBundle 'evidens/vim-twig'
+" ソースのクイック実行+出力
+NeoBundle 'thinca/vim-quickrun'
+" 汎用的なquickrun-hookまとめ
+NeoBundle "osyo-manga/shabadou.vim"
+" 非同期実行を可能に
+" NeoBundle 'Shougo/vimproc'
+"            \ , {
+"            \ 'build' : {
+"            \   'windows' : 'tools\\update-dll-mingw.bat',
+"            \   'cygwin'  : 'make -f make_cygwin.mak',
+"            \   'mac'     : 'make -f make_mac.mak',
+"            \   'linux'   : 'make',
+"            \   'unix'    : 'gmake',
+"            \ },
+"            \}
 
 " カラースキーム
 NeoBundle 'reedes/vim-colors-pencil'
@@ -233,3 +251,33 @@ endfunction
 function! LightlineMode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+
+" quickrunの設定
+" if !exists('g:quickrun_config'
+"     let g:quickrun_config = {}
+" endif
+" 
+" let g:quickrun_config['_'] = {
+" \ 'runner'                                 : 'vimproc',
+" \ 'runner/vimproc/updatetime'              : 50,
+" \ 'outputter'                              : 'multi:buffer:quickfix',
+" \ 'outputter/buffer/split'                 : 'botright 8sp',
+" \ 'hook/close_quickfix/enable_hook_loaded' : 1,
+" \ 'hook/close_quickfix/enable_success'     : 1,
+" \ 'hook/close_buffer/enable_failure'       : 1,
+" \}
+" 
+" " *Test.phpのファイルタイプを、phpかつphpunitとして認識
+" augroup MyVimrc
+"     autocmd!
+" augroup END
+" autocmd MyVimrc BufNewFile,BufRead *Test.php setlocal ft=php.phpunit
+" 
+" " ファイルタイプphp.phpunitのquickrun設定
+" let g:quickrun_config['php.phpunit'] = {
+" \ 'hook/cd/directory'              : '%S:p:h',
+" \ 'command'                        : 'phpunit.sh',
+" \ 'cmdopt'                         : '',
+" \ 'exec'                           : '%c %o %s',
+" \ 'outputter/quickfix/errorformat' : '%f:%l,%m in %f on line %l',
+" \}
