@@ -65,6 +65,8 @@ NeoBundle 'AndrewRadev/linediff.vim'
 NeoBundle 'freitass/todo.txt-vim'
 " 日記作る時用。新規ディレクトリ内のファイル保存するときにディレクトリを作成
 NeoBundle 'mopp/autodirmake.vim'
+" twig用syntax
+NeoBundle 'evidens/vim-twig'
 
 " カラースキーム
 NeoBundle 'reedes/vim-colors-pencil'
@@ -126,9 +128,9 @@ set tabstop=4
 " 行頭タブ幅も4にする
 set shiftwidth=4
 " 行頭スペースをタブ扱いする
-"  set expandtab
+  set expandtab
 "  ↑しない
-set noexpandtab
+"set noexpandtab
 " undofile作成しない。
 set noundofile
 " バックアップファイルも作成しない。
