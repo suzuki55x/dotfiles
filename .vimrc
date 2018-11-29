@@ -141,10 +141,10 @@ set visualbell
 " 対応する括弧表示
 set showmatch
 
-" タブ幅を4にする
-set tabstop=4
-" 行頭タブ幅も4にする
-set shiftwidth=4
+" タブ幅を2にする
+set tabstop=2
+" 行頭タブ幅も2にする
+set shiftwidth=2
 " 行頭スペースをタブ扱いする
   set expandtab
 "  ↑しない
