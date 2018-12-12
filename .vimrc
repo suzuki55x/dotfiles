@@ -35,7 +35,7 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-endwise'
 " ステータスラインの色変えるやつ
 NeoBundle 'itchyny/lightline.vim'
-" ビジュアルモードでコメントアウトやつ(選択してctr+-を二回)
+" ビジュアルモードでコメントアウトやつ(選択してctr+_を二回 or gcc)
 NeoBundle 'tomtom/tcomment_vim'
 " HTML5のタグ用のsyntax
 NeoBundle 'othree/html5.vim'
@@ -99,7 +99,9 @@ filetype plugin indent on
 " .mdもマークダウン形式のファイルだよ。
 au BufRead,BufNewFile *.md set filetype=markdown
 " .vueはHTML形式のファイルだよ。
-au BufRead,BufNewFile *.vue set filetype=html
+" au BufRead,BufNewFile *.vue set filetype=html
+" .vueはsyntax判断をファイルの先頭から行う。
+"autocmd FileType vue syntax sync fromstart
 
 " PrevimOpenで開くブラウザ指定
 let g:previm_open_cmd = 'start chrome'
