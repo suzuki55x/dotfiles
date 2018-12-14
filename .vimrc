@@ -102,7 +102,7 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " au BufRead,BufNewFile *.vue set filetype=html
 " .vueはsyntax判断をファイルの先頭から行う。
 " => 500行前まで検索に変更
-autocmd FileType vue, jsx syntax sync minlines=500 maxlines=1000
+autocmd FileType vue,jsx syntax sync minlines=500 maxlines=1000
 
 " PrevimOpenで開くブラウザ指定
 let g:previm_open_cmd = 'start chrome'
