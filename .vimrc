@@ -101,7 +101,8 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " .vueはHTML形式のファイルだよ。
 " au BufRead,BufNewFile *.vue set filetype=html
 " .vueはsyntax判断をファイルの先頭から行う。
-"autocmd FileType vue syntax sync fromstart
+" => 500行前まで検索に変更
+autocmd FileType vue, jsx syntax sync minlines=500 maxlines=1000
 
 " PrevimOpenで開くブラウザ指定
 let g:previm_open_cmd = 'start chrome'
@@ -144,9 +145,9 @@ set visualbell
 set showmatch
 
 " タブ幅を2にする
-set tabstop=2
+set tabstop=4
 " 行頭タブ幅も2にする
-set shiftwidth=2
+set shiftwidth=4
 " 行頭スペースをタブ扱いする
   set expandtab
 "  ↑しない
