@@ -105,7 +105,7 @@ au BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType vue,jsx syntax sync minlines=500 maxlines=1000
 
 " PrevimOpenで開くブラウザ指定
-let g:previm_open_cmd = 'start chrome'
+" let g:previm_open_cmd = 'start chrome'
 " vim-markdownが勝手にfolding(折り畳み)してくるの対策
 let g:vim_markdown_folding_disabled = 1
 
@@ -145,9 +145,9 @@ set visualbell
 set showmatch
 
 " タブ幅を2にする
-set tabstop=4
+set tabstop=2
 " 行頭タブ幅も2にする
-set shiftwidth=4
+set shiftwidth=2
 " 行頭スペースをタブ扱いする
   set expandtab
 "  ↑しない
