@@ -74,6 +74,8 @@ NeoBundle 'evidens/vim-twig'
 NeoBundle 'thinca/vim-quickrun'
 " 汎用的なquickrun-hookまとめ
 NeoBundle "osyo-manga/shabadou.vim"
+" verilogなど、+`brew install verilator`が必要
+NeoBundle "scrooloose/syntastic"
 " 非同期実行を可能に
 " NeoBundle 'Shougo/vimproc'
 "            \ , {
@@ -143,6 +145,10 @@ set nocursorcolumn
 set visualbell
 " 対応する括弧表示
 set showmatch
+
+set incsearch
+set ignorecase
+set smartcase
 
 " タブ幅を2にする
 set tabstop=2
