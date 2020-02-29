@@ -76,6 +76,8 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle "osyo-manga/shabadou.vim"
 " verilogなど、+`brew install verilator`が必要
 NeoBundle "scrooloose/syntastic"
+" f検索強化
+NeoBundle "rhysd/clever-f.vim"
 " 非同期実行を可能に
 " NeoBundle 'Shougo/vimproc'
 "            \ , {
