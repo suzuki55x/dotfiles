@@ -127,12 +127,18 @@ colorscheme tender
 " 文字コード指定
 set enc=utf-8
 set fenc=utf-8
+set fencs=ucs-boms,utf-8,euc-jp,cp932
+set ffs=unix,dos,mac
+
+set ambiwidth=double
+
 " 編集中ファイルが変更されたら自動で再読み込み
 set autoread
 " 入力中コマンドを表示
 set showcmd
 " コマンドライン補完
 set wildmode=list:longest,full
+set wildmenu
 " 行番号表示
 set number
 " 現在の行を強調表示
@@ -150,12 +156,16 @@ set incsearch
 set ignorecase
 set smartcase
 
+set autoindent
+set smartindent
+ 
 " タブ幅を2にする
 set tabstop=2
+set softtabstop=2
 " 行頭タブ幅も2にする
 set shiftwidth=2
 " 行頭スペースをタブ扱いする
-  set expandtab
+set expandtab
 "  ↑しない
 "set noexpandtab
 " undofile作成しない。
