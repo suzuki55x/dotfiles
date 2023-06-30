@@ -96,6 +96,9 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'KKPMW/moonshine-vim'
 NeoBundle 'jacoborus/tender.vim'
 
+" GitHub Copilot
+NeoBundle 'github/copilot.vim'
+
 call neobundle#end()
 
 filetype plugin indent on
